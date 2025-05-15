@@ -31,7 +31,7 @@ function setup() {
     angleMode(DEGREES);
     rectMode(CENTER);
 
-    // Generate Random Values Function
+    // Generate Random Values
     generateRandomValues();
 }
 
@@ -44,3 +44,24 @@ function generateRandomValues() {
     }
 }
 
+// Generate Artwork Function
+function generateArcs() {
+    generateRandomValues();
+    clear();
+    SHAPES = [];
+    draw();
+}
+
+// Main Draw Function
+function draw() {
+    background('#1c1c1c');
+    //text(frameRate(), 10, GRIDBOX * ROWS + 20);
+    // go to a point on the screen and draw a crystal
+    // continue to do this until we run out of room
+    noFill()
+
+}
+
+function windowResized(){
+
+}
