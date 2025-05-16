@@ -20,7 +20,26 @@ class semiArcShape extends Shapes {
         this.id = floor(random(0, 4));
     }
 
+    render() {
+        super.render();
+        push();
+        stroke(this.strokeColor);
+        strokeWeight(this.strokeW);
+        translate(this.posX, this.posY);
 
+        var firstPx = 0;
+        var firstPy = -this.gridSize * 0.5;
+        var lastPx = firstPx;
+        var lastPy = firstPy * -1;
+        var firstCPx = -this.gridSize - this.gridSize * 0.5 - 6;
+        var firstCPy = -this.gridSize * 0.5;
+        var lastCPx = firstCPx;
+        var lastCPy = firstCPy * -1;
+
+        rotate(this.randRot[this.id]);
+        curve(firstCPx, firstCPy, firstPx, firstPy, lastPx, lastPy, lastCPx, lastCPy)
+        pop();
+    }
 }
 
 class lineShape extends Shapes {
@@ -50,5 +69,5 @@ class dashedLineShape extends Shapes {
         this.id = floor(random(0, 4));
     }
 
-    
+
 }
