@@ -101,8 +101,26 @@ class noisyLineShape extends Shapes {
             diagonalLen = CRYSTAL_SIZE + 1;
             rotate(this.randRotLn[this.id]);
         }
+
+        for (var x = 0; x < diagonalLen; x = x + xRes) {
+            var noiseVal = noise(x * noiseScale, this.rand * noiseScale);
+            xp = x - this.gridSize * 0.5 - diagonalFac;
+            yp = noiseVal * this.yThres;
+            // 1st point of the line
+            if (x == xRes) {
+                if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45)
+                    line(-this.gridSize * 0.5 - diagonalFac, 0, xp, yp);
+                else
+                    line(-this.gridSize * 0.5, 0, xp, yp);
+            } else if (x > diagonalLen - xRes) {
+
+            }
+        }
     }
 
+    for (var x = 0; x < diagonalLen; x = x + xRes) {
+        var noiseVal = noise(x * noiseScale, this.rand * noiseScale);
+    }
 }
 
 class dashedLineShape extends Shapes {
