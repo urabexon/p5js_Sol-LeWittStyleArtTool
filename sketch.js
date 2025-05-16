@@ -60,8 +60,31 @@ function draw() {
     // continue to do this until we run out of room
     noFill()
 
+    var id;
+    if (SHAPES.length != (COLUMNS)*(ROWS) ) {
+        for (let x = 0; x < COLUMNS; x++) {
+            for (let y = 0; y < ROWS; y++) {
+                const posX = START + (x * GRIDBOX)
+                const posY = START + (y * GRIDBOX)
+                id = y + (x * ROWS);
+
+                if (rand[id] < gui.p.percentHalfCircle / 100.)
+                    SHAPES.push(new arcShape(posX, posY, color(240, 240, 240), gui.p.thickness));
+                else if (rand[id] < (gui.p.percentStraightLine) / 100.)
+                    SHAPES.push(new lineShape(posX, posY, color(240, 240, 240), gui.p.thickness));
+                else if (rand[id] < gui.p.percentDashedLine / 100.)
+                    SHAPES.push(new dashedLineShape(posX, posY, color(240, 240, 240), gui.p.thickness));
+                else if (rand[id] < gui.p.percentNoisyLine / 100.)
+                    SHAPES.push(new noisyLineShape(posX, posY, color(240, 240, 240), gui.p.thickness));
+                else if (rand[id] < gui.p.percentMidHalfCircle / 100.)
+                    SHAPES.push(new semiArcShape(posX, posY, color(240, 240, 240), gui.p.thickness));
+            }
+        }
+    }
+    for (let i = 0; i < SHAPES.length; i++)
+        SHAPES[i].render();
 }
 
-function windowResized(){
+function windowResized() {
 
 }
