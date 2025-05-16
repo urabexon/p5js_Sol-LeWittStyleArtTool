@@ -120,13 +120,16 @@ class noisyLineShape extends Shapes {
                     line(px, py, diagonalLen * 0.5, 0);
             // Other points than 1st and the last one
             } else if (x != 0 && x != xRes && x != diagonalLen - xRes) {
-
+                if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45)
+                    line(px, py, xp, yp);
+                else
+                    line(px, py, xp, yp);
             }
+            px = xp;
+            py = yp;
         }
-    }
-
-    for (var x = 0; x < diagonalLen; x = x + xRes) {
-        var noiseVal = noise(x * noiseScale, this.rand * noiseScale);
+        //rotate(millis()*0.03);
+        pop();
     }
 }
 
