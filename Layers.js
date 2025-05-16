@@ -84,6 +84,13 @@ class noisyLineShape extends Shapes {
         strokeWeight(this.strokeW);
 
         var noiseScale = 0.08;
+        var xRes = 5;
+        var px = -this.gridSize * 0.5;
+        var py = -this.gridSize * 0.5;
+        var xp = 0;
+        var yp = 0;
+        var diagonalFac = 0;
+        var diagonalLen;
     }
 
 }
