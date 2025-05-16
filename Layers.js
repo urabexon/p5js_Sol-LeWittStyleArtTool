@@ -162,7 +162,26 @@ class dashedLineShape extends Shapes {
     }
 
     dashedLine(x1, y1, x2, y2, l, g) {
+        var pc = dist(x1, y1, x2, y2) / 100;
+        var pcCount = 1;
+        var lPercent = 0;
+        var gPercent = 0;
+        var currentPos = 0;
+        var xx1 = 0;
+        var yy1 = 0;
+        var xx2 = 0;
+        var yy2 = 0;
 
+        while (int(pcCount * pc) < l)
+            pcCount++
+        lPercent = pcCount;
+        pcCount = 1;
+        while (int(pcCount * pc) < g)
+            pcCount++
+        gPercent = pcCount;
+        lPercent = lPercent / 100;
+        gPercent = gPercent / 100;
+        
     }
 
     dashedRect(x, y, w, h, l, g) {
