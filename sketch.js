@@ -86,5 +86,12 @@ function draw() {
 }
 
 function windowResized() {
+    COLUMNS = ceil(windowWidth / CRYSTAL_SIZE);
+    ROWS    = ceil(windowHeight / CRYSTAL_SIZE);
 
+    const totalX = GRIDBOX * COLUMNS;
+    const totalY = GRIDBOX * ROWS;
+
+    resizeCanvas(totalX, totalY);
+    generateArcs();
 }
