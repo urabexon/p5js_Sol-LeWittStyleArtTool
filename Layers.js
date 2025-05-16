@@ -187,7 +187,25 @@ class dashedLineShape extends Shapes {
             xx2 = lerp(x1, x2, currentPos + lPercent);
             yy2 = lerp(y1, y2, currentPos + lPercent);
 
-            
+            if (x1 > x2) {
+                if (xx2 < x2)
+                    xx2 = x2;
+            }
+            if (x1 < x2) {
+                if (xx2 > x2)
+                    xx2 = x2;
+            }
+            if (y1 > y2) {
+                if (yy2 < y2)
+                    yy2 = y2;
+            }
+            if (y1 < y2) {
+                if (yy2 > y2)
+                    yy2 = y2;
+            }
+
+            line(xx1, yy1, xx2, yy2);
+            currentPos = currentPos + lPercent + gPercent;
         }
     }
 
