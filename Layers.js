@@ -102,7 +102,13 @@ class dashedLineShape extends Shapes {
     }
 
     render() {
+        super.render();
+        push();
+        translate(this.posX, this.posY);
+        stroke(this.strokeColor);
+        strokeWeight(this.strokeW);
 
+        ellipse(0, 0, this.gridSize*0.5, this.gridSize*0.5);
     }
 
 }
