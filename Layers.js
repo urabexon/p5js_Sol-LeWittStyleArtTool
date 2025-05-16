@@ -48,7 +48,23 @@ class lineShape extends Shapes {
         this.id = floor(random(0, 4));
     }
 
+    render() {
+        super.render();
+        push();
+        translate(this.posX, this.posY);
+        stroke(this.strokeColor);
+        strokeWeight(this.strokeW);
 
+        if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45) {
+            //line(-this.gridSize*0.5,0,this.dDist-this.gridSize*0.5,0);
+            rotate(this.randRotLn[this.id] - 45);
+            line(-this.gridSize * 0.5, -this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5);
+        } else {
+            rotate(this.randRotLn[this.id]);
+            line(-this.gridSize * 0.5, 0, this.gridSize * 0.5, 0);
+        }
+        pop();
+    }
 }
 
 class noisyLineShape extends Shapes {
