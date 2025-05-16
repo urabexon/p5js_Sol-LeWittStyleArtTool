@@ -146,7 +146,7 @@ class dashedLineShape extends Shapes {
         stroke(this.strokeColor);
         strokeWeight(this.strokeW);
 
-        ellipse(0, 0, this.gridSize*0.5, this.gridSize*0.5);
+        // ellipse(0, 0, this.gridSize*0.5, this.gridSize*0.5);
     }
 
 }
