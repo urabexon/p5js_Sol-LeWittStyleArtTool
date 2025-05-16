@@ -17,7 +17,6 @@ class GUI {
             this.percentNoisyLine = 95.0;
             this.percentMidHalfCircle = 100.0;
 
-
             this.generateArt = function () {
                 generateArcs();
             }
@@ -32,7 +31,6 @@ class GUI {
         // GUI
         var gui = new dat.GUI({ name: 'Sol Lewitt Wall Drawings Generator', width: '27' });
         this.p = new this.parameters();
-
         displayGridOnChange = gui.add(this.p, "displayGrid").name("Display Bg Grid");
         displayGridOnChange.onChange(function (value) {
             draw();
@@ -40,8 +38,9 @@ class GUI {
 
         thicknessOnchange = gui.add(this.p, "thickness").name("Stroke Thickness").min(1).max(8).step(1);
         thicknessOnchange.onFinishChange(function (value) {
-            SHAPES.strokeW = value;
-            this.thickness = value;
+            // SHAPES.strokeW = value;
+            // this.thickness = value;
+            clear();
         });
     }
 }
