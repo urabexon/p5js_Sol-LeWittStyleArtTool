@@ -181,7 +181,14 @@ class dashedLineShape extends Shapes {
         gPercent = pcCount;
         lPercent = lPercent / 100;
         gPercent = gPercent / 100;
-        
+        while (currentPos < 1) {
+            xx1 = lerp(x1, x2, currentPos);
+            yy1 = lerp(y1, y2, currentPos);
+            xx2 = lerp(x1, x2, currentPos + lPercent);
+            yy2 = lerp(y1, y2, currentPos + lPercent);
+
+            
+        }
     }
 
     dashedRect(x, y, w, h, l, g) {
