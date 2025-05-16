@@ -76,6 +76,15 @@ class noisyLineShape extends Shapes {
         this.yThres = floor(random(7, 16));
     }
 
+    render() {
+        super.render();
+        push();
+        translate(this.posX, this.posY);
+        stroke(this.strokeColor);
+        strokeWeight(this.strokeW);
+
+        var noiseScale = 0.08;
+    }
 
 }
 
@@ -85,5 +94,8 @@ class dashedLineShape extends Shapes {
         this.id = floor(random(0, 4));
     }
 
+    render() {
+
+    }
 
 }
