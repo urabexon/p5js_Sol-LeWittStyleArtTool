@@ -145,8 +145,20 @@ class dashedLineShape extends Shapes {
         translate(this.posX, this.posY);
         stroke(this.strokeColor);
         strokeWeight(this.strokeW);
-
         // ellipse(0, 0, this.gridSize*0.5, this.gridSize*0.5);
+
+        let g = 3;
+        let l = 4;
+
+        if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45) {
+            //line(-this.gridSize*0.5,0,this.dDist-this.gridSize*0.5,0);
+            rotate(this.randRotLn[this.id] - 45);
+            this.dashedLine(- this.gridSize * 0.5, - this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5, l, g);
+        } else {
+            rotate(this.randRotLn[this.id]);
+            this.dashedLine(-this.gridSize * 0.5, 0, this.gridSize * 0.5, 0, l, g);
+        }
+        pop();
     }
 
 }
