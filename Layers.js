@@ -91,6 +91,16 @@ class noisyLineShape extends Shapes {
         var yp = 0;
         var diagonalFac = 0;
         var diagonalLen;
+
+        if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45) {
+            diagonalLen = floor(dist(-this.gridSize * 0.5, -this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5));
+            diagonalFac = 20;
+            rotate(this.randRotLn[this.id]);
+        } else {
+            diagonalFac = 0;
+            diagonalLen = CRYSTAL_SIZE + 1;
+            rotate(this.randRotLn[this.id]);
+        }
     }
 
 }
