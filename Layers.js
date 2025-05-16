@@ -161,4 +161,14 @@ class dashedLineShape extends Shapes {
         pop();
     }
 
+    dashedLine(x1, y1, x2, y2, l, g) {
+
+    }
+
+    dashedRect(x, y, w, h, l, g) {
+        dashedLine(x, y, x + w, y, l, g);         // Top
+        dashedLine(x, y + h, x + w, y + h, l, g); // Bottom
+        dashedLine(x, y, x, y + h, l, g);         // Left
+        dashedLine(x + w, y, x + w, y + h, l, g); // Right
+    }
 }
