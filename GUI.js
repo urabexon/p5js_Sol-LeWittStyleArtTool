@@ -48,6 +48,7 @@ class GUI {
         chanceHalfCircleOnChange = gui.add(this.p, "percentHalfCircle").min(0).max(100);
         chanceHalfCircleOnChange.onChange(function (value) {
             generateArcs();
+            clear();
         });
 
         // Straight Line Shape
@@ -58,6 +59,11 @@ class GUI {
         });
 
         // Dashed Line Shape
+        chanceDashedLineOnChange = gui.add(this.p, "percentDashedLine").min(0).max(100);
+        chanceDashedLineOnChange.onChange(function (value) {
+            generateArcs();
+            clear();
+        });
 
         // chanceNoisyLineChange Line Shape
 
