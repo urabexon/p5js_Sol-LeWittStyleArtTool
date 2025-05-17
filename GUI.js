@@ -38,9 +38,21 @@ class GUI {
 
         thicknessOnchange = gui.add(this.p, "thickness").name("Stroke Thickness").min(1).max(8).step(1);
         thicknessOnchange.onFinishChange(function (value) {
-            // SHAPES.strokeW = value;
-            // this.thickness = value;
             clear();
+            for (let i = 0; i < SHAPES.length; i++)
+                SHAPES[i].setStrokeW(value);
+            draw();
         });
+
+        // Half circle chance
+
+        // Straight Line Shape
+
+        // Dashed Line Shape
+
+        // chanceNoisyLineChange Line Shape
+
+        // chanceMidHalfCircleChange Line Shape
+
     }
 }
