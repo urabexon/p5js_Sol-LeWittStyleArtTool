@@ -7,7 +7,14 @@ Inspired by Sol LeWitt's iconic wall drawings, **Geometric Generative Art** is a
 1. Open `index.html` in your browser.
 2. Adjust the parameters in the GUI (upper-right corner).
 3. Click the **"Generate Artwork"** button to create your piece.
-4. Click **"Save As SVG"** to export your artwork.
+4. Click **"Save As PNG"** to export your artwork as an image file (with a timestamped filename).
+
+## Demo 📷
+
+<p align="center">
+  <img src="images/artwork_demo1.png" width="45%" />
+  <img src="images/artwork_demo2.png" width="45%" />
+</p>
 
 ## Features 📦
 
@@ -18,7 +25,7 @@ Inspired by Sol LeWitt's iconic wall drawings, **Geometric Generative Art** is a
   - Noisy lines
 - Toggle background grid on/off
 - Adjust stroke thickness
-- Save artwork as **SVG**
+- Save artwork as **PNG** (timestamped)
 - One-click random generation
 
 ## Inspiration 💡
@@ -33,7 +40,6 @@ This tool is inspired by the conceptual works of **Sol LeWitt**, a pioneer in mi
 
 - [p5.js](https://p5js.org/) — Creative coding framework
 - [dat.GUI](https://github.com/dataarts/dat.gui) — Interactive UI controller
-- [p5.svg.js](https://github.com/zenozeng/p5.js-svg) — SVG rendering for p5.js
 
 ---
 
