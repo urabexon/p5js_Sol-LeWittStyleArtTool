@@ -45,6 +45,10 @@ class GUI {
         });
 
         // Half circle chance
+        chanceHalfCircleOnChange = gui.add(this.p, "percentHalfCircle").min(0).max(100);
+        chanceHalfCircleOnChange.onChange(function (value) {
+            generateArcs();
+        });
 
         // Straight Line Shape
 
