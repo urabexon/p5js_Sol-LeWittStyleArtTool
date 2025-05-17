@@ -22,7 +22,8 @@ class GUI {
             }
 
             this.Save = function () {
-                saveCanvas('artwork', 'png');
+                const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+                saveCanvas('artwork_' + timestamp, 'png');
             }
 
             this.thickness = 1;
