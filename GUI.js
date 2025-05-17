@@ -51,6 +51,11 @@ class GUI {
         });
 
         // Straight Line Shape
+        chanceLineOnChange = gui.add(this.p, "percentStraightLine").min(0).max(100);
+        chanceLineOnChange.onChange(function (value) {
+            generateArcs();
+            clear();
+        });
 
         // Dashed Line Shape
 
