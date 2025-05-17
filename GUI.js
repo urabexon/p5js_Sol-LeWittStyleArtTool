@@ -22,7 +22,29 @@ class GUI {
             }
 
             this.Save = function () {
-                saveSVG();
+                const w = width;
+                const h = height;
+
+                // 一時的にSVGキャンバスを作成
+                let svgP5 = new p5((p) => {
+                    p.setup = function () {
+                        p.createCanvas(w, h, SVG);
+                        p.noFill();
+                        p.background('#1c1c1c');
+
+                        // 一時的に SHAPES をコピーして再描画
+                        for (let i = 0; i < SHAPES.length; i++) {
+                            if (SHAPES[i].render)
+                                SHAPES[i].render();
+                        }
+
+                        // 保存してインスタンス削除
+                        p.saveSVG('artwork.svg');
+                        setTimeout(() => {
+                            svgP5.remove();  // SVG Canvasごと削除
+                        }, 200);
+                    };
+                }, 'svg-container');
             }
 
             this.thickness = 1;
