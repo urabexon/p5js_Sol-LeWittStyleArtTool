@@ -79,5 +79,7 @@ class GUI {
             clear();
         });
 
+        gui.add(this.p, "generateArt").name("Generate Artwork");
+        gui.add(this.p, "Save").name("Save As SVG");
     }
 }
