@@ -33,11 +33,8 @@ class GUI {
                         p.background('#1c1c1c');
 
                         // 一時的に SHAPES をコピーして再描画
-                        for (let i = 0; i < SHAPES.length; i++) {
-                            if (SHAPES[i].render)
-                                SHAPES[i].render();
-                        }
-
+                        for (let i = 0; i < SHAPES.length; i++)
+                            SHAPES[i].render(p);
                         // 保存してインスタンス削除
                         p.saveSVG('artwork.svg');
                         setTimeout(() => {
@@ -46,7 +43,6 @@ class GUI {
                     };
                 }, 'svg-container');
             }
-
             this.thickness = 1;
         }
 
