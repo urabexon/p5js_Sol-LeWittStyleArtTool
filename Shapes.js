@@ -13,18 +13,17 @@ class Shapes {
         this.dDist         = dist(0,0,this.gridSize,this.gridSize); // Diagonal distance
     }
 
-    render() {
+    render(p = window) {
         if (this.fillMode) {
-            fill(this.fillColor);
+            p.fill(this.fillColor);
         } else {
-            noFill();
-            stroke(this.frameStrokeCl);
-            //strokeWeight(this.strokeW);
+            p.noFill();
+            p.stroke(this.frameStrokeCl);
         }
         if (gui.p.displayGrid) {
-            rect(this.posX, this.posY, this.gridSize, this.gridSize);
-            line(this.posX, this.posY - this.gridSize*0.5,this.posX, this.posY + this.gridSize - this.gridSize*0.5);
-            line(this.posX - this.gridSize*0.5, this.posY , this.posX + this.gridSize  - this.gridSize*0.5, this.posY );
+            p.rect(this.posX, this.posY, this.gridSize, this.gridSize);
+            p.line(this.posX, this.posY - this.gridSize * 0.5, this.posX, this.posY + this.gridSize - this.gridSize * 0.5);
+            p.line(this.posX - this.gridSize * 0.5, this.posY, this.posX + this.gridSize - this.gridSize * 0.5, this.posY);
         }
     }
 

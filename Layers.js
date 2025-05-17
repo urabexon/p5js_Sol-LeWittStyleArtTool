@@ -1,218 +1,165 @@
 class arcShape extends Shapes {
-    constructor(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl) {
-        super(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl);
+    constructor(...args) {
+        super(...args);
         this.id = floor(random(0, 4));
     }
 
-    render() {
-        super.render();
-        push();
-        stroke(this.strokeColor);
-        strokeWeight(this.strokeW);
-        arc(this.posX, this.posY, this.gridSize, this.gridSize, this.randRot[this.id], this.randRot[this.id] + 180);
-        pop();
+    render(p = window) {
+        super.render(p);
+        p.push();
+        p.stroke(this.strokeColor);
+        p.strokeWeight(this.strokeW);
+        p.arc(this.posX, this.posY, this.gridSize, this.gridSize, this.randRot[this.id], this.randRot[this.id] + 180);
+        p.pop();
     }
 }
 
 class semiArcShape extends Shapes {
-    constructor(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl) {
-        super(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl);
+    constructor(...args) {
+        super(...args);
         this.id = floor(random(0, 4));
     }
 
-    render() {
-        super.render();
-        push();
-        stroke(this.strokeColor);
-        strokeWeight(this.strokeW);
-        translate(this.posX, this.posY);
+    render(p = window) {
+        super.render(p);
+        p.push();
+        p.stroke(this.strokeColor);
+        p.strokeWeight(this.strokeW);
+        p.translate(this.posX, this.posY);
 
-        var firstPx = 0;
-        var firstPy = -this.gridSize * 0.5;
-        var lastPx = firstPx;
-        var lastPy = firstPy * -1;
-        var firstCPx = -this.gridSize - this.gridSize * 0.5 - 6;
-        var firstCPy = -this.gridSize * 0.5;
-        var lastCPx = firstCPx;
-        var lastCPy = firstCPy * -1;
+        const firstPx = 0;
+        const firstPy = -this.gridSize * 0.5;
+        const lastPx = firstPx;
+        const lastPy = -firstPy;
+        const firstCPx = -this.gridSize * 1.5 - 6;
+        const firstCPy = firstPy;
+        const lastCPx = firstCPx;
+        const lastCPy = -firstCPy;
 
-        rotate(this.randRot[this.id]);
-        curve(firstCPx, firstCPy, firstPx, firstPy, lastPx, lastPy, lastCPx, lastCPy)
-        pop();
+        p.rotate(this.randRot[this.id]);
+        p.curve(firstCPx, firstCPy, firstPx, firstPy, lastPx, lastPy, lastCPx, lastCPy);
+        p.pop();
     }
 }
 
 class lineShape extends Shapes {
-    constructor(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl) {
-        super(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl);
+    constructor(...args) {
+        super(...args);
         this.id = floor(random(0, 4));
     }
 
-    render() {
-        super.render();
-        push();
-        translate(this.posX, this.posY);
-        stroke(this.strokeColor);
-        strokeWeight(this.strokeW);
+    render(p = window) {
+        super.render(p);
+        p.push();
+        p.translate(this.posX, this.posY);
+        p.stroke(this.strokeColor);
+        p.strokeWeight(this.strokeW);
 
-        if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45) {
-            //line(-this.gridSize*0.5,0,this.dDist-this.gridSize*0.5,0);
-            rotate(this.randRotLn[this.id] - 45);
-            line(-this.gridSize * 0.5, -this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5);
+        if (this.randRotLn[this.id] === 45 || this.randRotLn[this.id] === -45) {
+            p.rotate(this.randRotLn[this.id] - 45);
+            p.line(-this.gridSize * 0.5, -this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5);
         } else {
-            rotate(this.randRotLn[this.id]);
-            line(-this.gridSize * 0.5, 0, this.gridSize * 0.5, 0);
+            p.rotate(this.randRotLn[this.id]);
+            p.line(-this.gridSize * 0.5, 0, this.gridSize * 0.5, 0);
         }
-        pop();
+        p.pop();
     }
 }
 
 class noisyLineShape extends Shapes {
-    constructor(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl) {
-        super(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl);
+    constructor(...args) {
+        super(...args);
         noiseSeed(random(this.gridSize));
         this.id = floor(random(0, 4));
         this.rand = random(0.005, 0.03);
         this.yThres = floor(random(7, 16));
     }
 
-    render() {
-        super.render();
-        push();
-        translate(this.posX, this.posY);
-        stroke(this.strokeColor);
-        strokeWeight(this.strokeW);
+    render(p = window) {
+        super.render(p);
+        p.push();
+        p.translate(this.posX, this.posY);
+        p.stroke(this.strokeColor);
+        p.strokeWeight(this.strokeW);
 
-        var noiseScale = 0.08;
-        var xRes = 5;
-        var px = -this.gridSize * 0.5;
-        var py = -this.gridSize * 0.5;
-        var xp = 0;
-        var yp = 0;
-        var diagonalFac = 0;
-        var diagonalLen;
+        const noiseScale = 0.08;
+        const xRes = 5;
+        let px = -this.gridSize * 0.5;
+        let py = -this.gridSize * 0.5;
+        let xp = 0;
+        let yp = 0;
+        let diagonalFac = 0;
+        let diagonalLen;
 
-        if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45) {
-            diagonalLen = floor(dist(-this.gridSize * 0.5, -this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5));
+        if (this.randRotLn[this.id] === 45 || this.randRotLn[this.id] === -45) {
+            diagonalLen = floor(p.dist(-this.gridSize * 0.5, -this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5));
             diagonalFac = 20;
-            rotate(this.randRotLn[this.id]);
         } else {
-            diagonalFac = 0;
             diagonalLen = CRYSTAL_SIZE + 1;
-            rotate(this.randRotLn[this.id]);
         }
 
-        for (var x = 0; x < diagonalLen; x = x + xRes) {
-            var noiseVal = noise(x * noiseScale, this.rand * noiseScale);
+        p.rotate(this.randRotLn[this.id]);
+
+        for (let x = 0; x < diagonalLen; x += xRes) {
+            const noiseVal = p.noise(x * noiseScale, this.rand * noiseScale);
             xp = x - this.gridSize * 0.5 - diagonalFac;
             yp = noiseVal * this.yThres;
-            // 1st point of the line
-            if (x == xRes) {
-                if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45)
-                    line(-this.gridSize * 0.5 - diagonalFac, 0, xp, yp);
-                else
-                    line(-this.gridSize * 0.5, 0, xp, yp);
-            // The last point must be the diagonal corner of the noisy line
-            } else if (x > diagonalLen - xRes) {
-                if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45)
-                    line(px, py, diagonalLen * 0.5, 0);
-                else
-                    line(px, py, diagonalLen * 0.5, 0);
-            // Other points than 1st and the last one
-            } else if (x != 0 && x != xRes && x != diagonalLen - xRes) {
-                if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45)
-                    line(px, py, xp, yp);
-                else
-                    line(px, py, xp, yp);
-            }
+
+            if (x === xRes)
+                p.line(-this.gridSize * 0.5 - diagonalFac, 0, xp, yp);
+            else if (x > diagonalLen - xRes)
+                p.line(px, py, diagonalLen * 0.5, 0);
+            else
+                p.line(px, py, xp, yp);
+
             px = xp;
             py = yp;
         }
-        //rotate(millis()*0.03);
-        pop();
+
+        p.pop();
     }
 }
 
 class dashedLineShape extends Shapes {
-    constructor(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl) {
-        super(_x, _y, _strokeColor, _strokeW, _fillMode, _fillColor, _frameStrokeCl);
+    constructor(...args) {
+        super(...args);
         this.id = floor(random(0, 4));
     }
 
-    render() {
-        super.render();
-        push();
-        translate(this.posX, this.posY);
-        stroke(this.strokeColor);
-        strokeWeight(this.strokeW);
-        // ellipse(0, 0, this.gridSize*0.5, this.gridSize*0.5);
+    render(p = window) {
+        super.render(p);
+        p.push();
+        p.translate(this.posX, this.posY);
+        p.stroke(this.strokeColor);
+        p.strokeWeight(this.strokeW);
 
-        let g = 3;
-        let l = 4;
+        const g = 3;
+        const l = 4;
 
-        if (this.randRotLn[this.id] == 45 || this.randRotLn[this.id] == -45) {
-            //line(-this.gridSize*0.5,0,this.dDist-this.gridSize*0.5,0);
-            rotate(this.randRotLn[this.id] - 45);
-            this.dashedLine(- this.gridSize * 0.5, - this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5, l, g);
+        if (this.randRotLn[this.id] === 45 || this.randRotLn[this.id] === -45) {
+            p.rotate(this.randRotLn[this.id] - 45);
+            this.dashedLine(p, -this.gridSize * 0.5, -this.gridSize * 0.5, this.gridSize * 0.5, this.gridSize * 0.5, l, g);
         } else {
-            rotate(this.randRotLn[this.id]);
-            this.dashedLine(-this.gridSize * 0.5, 0, this.gridSize * 0.5, 0, l, g);
+            p.rotate(this.randRotLn[this.id]);
+            this.dashedLine(p, -this.gridSize * 0.5, 0, this.gridSize * 0.5, 0, l, g);
         }
-        pop();
+
+        p.pop();
     }
 
-    dashedLine(x1, y1, x2, y2, l, g) {
-        var pc = dist(x1, y1, x2, y2) / 100;
-        var pcCount = 1;
-        var lPercent = 0;
-        var gPercent = 0;
-        var currentPos = 0;
-        var xx1 = 0;
-        var yy1 = 0;
-        var xx2 = 0;
-        var yy2 = 0;
-
-        while (int(pcCount * pc) < l)
-            pcCount++
-        lPercent = pcCount;
-        pcCount = 1;
-        while (int(pcCount * pc) < g)
-            pcCount++
-        gPercent = pcCount;
-        lPercent = lPercent / 100;
-        gPercent = gPercent / 100;
-        while (currentPos < 1) {
-            xx1 = lerp(x1, x2, currentPos);
-            yy1 = lerp(y1, y2, currentPos);
-            xx2 = lerp(x1, x2, currentPos + lPercent);
-            yy2 = lerp(y1, y2, currentPos + lPercent);
-
-            if (x1 > x2) {
-                if (xx2 < x2)
-                    xx2 = x2;
-            }
-            if (x1 < x2) {
-                if (xx2 > x2)
-                    xx2 = x2;
-            }
-            if (y1 > y2) {
-                if (yy2 < y2)
-                    yy2 = y2;
-            }
-            if (y1 < y2) {
-                if (yy2 > y2)
-                    yy2 = y2;
-            }
-
-            line(xx1, yy1, xx2, yy2);
-            currentPos = currentPos + lPercent + gPercent;
+    dashedLine(p, x1, y1, x2, y2, l, g) {
+        const totalDist = p.dist(x1, y1, x2, y2);
+        const dashCount = Math.floor(totalDist / (l + g));
+        for (let i = 0; i < dashCount; i++) {
+            const start = i * (l + g);
+            const end = start + l;
+            const t1 = start / totalDist;
+            const t2 = Math.min(end / totalDist, 1);
+            const xx1 = p.lerp(x1, x2, t1);
+            const yy1 = p.lerp(y1, y2, t1);
+            const xx2 = p.lerp(x1, x2, t2);
+            const yy2 = p.lerp(y1, y2, t2);
+            p.line(xx1, yy1, xx2, yy2);
         }
-    }
-
-    dashedRect(x, y, w, h, l, g) {
-        dashedLine(x, y, x + w, y, l, g);         // Top
-        dashedLine(x, y + h, x + w, y + h, l, g); // Bottom
-        dashedLine(x, y, x, y + h, l, g);         // Left
-        dashedLine(x + w, y, x + w, y + h, l, g); // Right
     }
 }
