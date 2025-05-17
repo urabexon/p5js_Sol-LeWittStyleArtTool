@@ -66,6 +66,11 @@ class GUI {
         });
 
         // chanceNoisyLineChange Line Shape
+        chanceNoisyLineChange = gui.add(this.p, "percentNoisyLine").min(0).max(100);
+        chanceNoisyLineChange.onChange(function (value) {
+            generateArcs();
+            clear();
+        });
 
         // chanceMidHalfCircleChange Line Shape
 
