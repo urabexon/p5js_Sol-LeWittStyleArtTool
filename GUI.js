@@ -48,35 +48,30 @@ class GUI {
         chanceHalfCircleOnChange = gui.add(this.p, "percentHalfCircle").min(0).max(100);
         chanceHalfCircleOnChange.onChange(function (value) {
             generateArcs();
-            clear();
         });
 
         // Straight Line Shape
         chanceLineOnChange = gui.add(this.p, "percentStraightLine").min(0).max(100);
         chanceLineOnChange.onChange(function (value) {
             generateArcs();
-            clear();
         });
 
         // Dashed Line Shape
         chanceDashedLineOnChange = gui.add(this.p, "percentDashedLine").min(0).max(100);
         chanceDashedLineOnChange.onChange(function (value) {
             generateArcs();
-            clear();
         });
 
         // chanceNoisyLineChange Line Shape
         chanceNoisyLineChange = gui.add(this.p, "percentNoisyLine").min(0).max(100);
         chanceNoisyLineChange.onChange(function (value) {
             generateArcs();
-            clear();
         });
 
         // chanceMidHalfCircleChange Line Shape
         chanceMidHalfCircleChange = gui.add(this.p, "percentMidHalfCircle").min(0).max(100);
         chanceMidHalfCircleChange.onChange(function (value) {
             generateArcs();
-            clear();
         });
 
         gui.add(this.p, "generateArt").name("Generate Artwork");
