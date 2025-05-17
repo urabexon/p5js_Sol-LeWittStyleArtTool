@@ -73,6 +73,11 @@ class GUI {
         });
 
         // chanceMidHalfCircleChange Line Shape
+        chanceMidHalfCircleChange = gui.add(this.p, "percentMidHalfCircle").min(0).max(100);
+        chanceMidHalfCircleChange.onChange(function (value) {
+            generateArcs();
+            clear();
+        });
 
     }
 }
