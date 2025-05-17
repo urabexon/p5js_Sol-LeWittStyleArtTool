@@ -9,6 +9,13 @@ Inspired by Sol LeWitt's iconic wall drawings, **Geometric Generative Art** is a
 3. Click the **"Generate Artwork"** button to create your piece.
 4. Click **"Save As PNG"** to export your artwork as an image file (with a timestamped filename).
 
+## Demo 📷
+
+<p align="center">
+  <img src="images/artwork_demo1.png" width="45%" />
+  <img src="images/artwork_demo2.png" width="45%" />
+</p>
+
 ## Features 📦
 
 - Slider to control the appearance ratio of each shape:
