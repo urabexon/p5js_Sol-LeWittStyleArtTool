@@ -2,6 +2,8 @@
 
 Inspired by Sol LeWitt's iconic wall drawings, **Geometric Generative Art** is a tool that allows you to freely generate and customize your own procedural wall art — directly in the browser!
 
+🔗 Try it out here: [Geometric Generative Art Tool](https://urabexon.github.io/p5js_Sol-LeWittStyleArtTool/)
+
 ## Usage 🚀
 
 1. Open `index.html` in your browser.
